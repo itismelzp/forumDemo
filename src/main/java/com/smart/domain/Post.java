@@ -36,11 +36,11 @@ public class Post extends BaseDomain {
     private Date createTime;
 
     @ManyToOne
-    @Column(name = "user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "topic_id")
     private Topic topic;
 
     public int getPostId() {
