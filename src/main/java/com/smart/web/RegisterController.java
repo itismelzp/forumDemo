@@ -33,7 +33,7 @@ public class RegisterController extends BaseController {
             userService.register(user);
         } catch (UserExistException e) {
             e.printStackTrace();
-            mav.addObject("errorMsg", "username is exsited, please another name");
+            mav.addObject("errorMsg", "username is exsited, please use another name");
             mav.setViewName("forward:/register.jsp");
         }
         setSessionUser(request, user);
