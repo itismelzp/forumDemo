@@ -33,13 +33,18 @@ public class ForumManageController extends BaseController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/index", method = RequestMethod.POST)
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
     public ModelAndView listAllBoards() {
         ModelAndView mav = new ModelAndView();
         List<Board> boards = forumService.getAllBoards();
         mav.addObject("boards", boards);
         mav.setViewName("/listAllBoards");
         return mav;
+    }
+
+    @RequestMapping(value = "/forum/addBoardPage", method = RequestMethod.GET)
+    public String addBoardPage() {
+        return "/addBoard";
     }
 
     @RequestMapping(value = "/forum/addBoard", method = RequestMethod.POST)
@@ -75,7 +80,7 @@ public class ForumManageController extends BaseController {
         return mav;
     }
 
-    @RequestMapping(value = "/forum/userLockManagePage", method = RequestMethod.POST)
+    @RequestMapping(value = "/forum/userLockManagePage", method = RequestMethod.GET)
     public ModelAndView userLockManagePage() {
         ModelAndView mav = new ModelAndView();
         List<User> users = userService.getAllUsers();

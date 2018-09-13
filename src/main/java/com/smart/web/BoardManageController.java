@@ -7,8 +7,6 @@ import com.smart.domain.Post;
 import com.smart.domain.Topic;
 import com.smart.domain.User;
 import com.smart.service.ForumService;
-import com.sun.jna.platform.win32.WinNT;
-import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.awt.*;
 import java.util.Date;
 
 /**
@@ -40,7 +37,7 @@ public class BoardManageController extends BaseController {
         ModelAndView mav = new ModelAndView();
         Board board = forumService.getBoardById(boardId);
         pageNo = pageNo == null ? 1 : pageNo;
-        Page pagedTopic = forumService.getPagedPosts(boardId, pageNo, CommonConstant.PAGE_SIZE);
+        Page pagedTopic = forumService.getPageTopics(boardId, pageNo, CommonConstant.PAGE_SIZE);
         mav.addObject("board", board);
         mav.addObject("pageTopic", pagedTopic);
         mav.setViewName("/listBoardTopics");

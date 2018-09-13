@@ -1,5 +1,4 @@
 # Operating System Files
-
 *.DS_Store
 Thumbs.db
 *~
@@ -11,7 +10,6 @@ Thumbs.db
 *.bak
 
 # Build Files #
-
 bin
 target
 build/
@@ -24,9 +22,7 @@ build/
 .settings
 .metadata*
 
-
 # IntelliJ IDEA Files #
-
 *.iml
 *.ipr
 *.iws
