@@ -51,7 +51,7 @@
 		<td colspan="2">
 		   <input type="submit" value="保存">
 		   <input type="reset" value="重置">
-		   <input type="hidden" name="_method" value="PUT">
+		   <%--<input type="hidden" name="_method" value="PUT">--%>
 		</td>
 	</tr>
 </table>

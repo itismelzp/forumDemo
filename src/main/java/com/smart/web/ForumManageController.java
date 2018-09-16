@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -60,12 +61,12 @@ public class ForumManageController extends BaseController {
         List<User> users = userService.getAllUsers();
         mav.addObject("boards", boards);
         mav.addObject("users", users);
-        mav.setViewName("/setBoradManager");
+        mav.setViewName("/setBoardManager");
         return mav;
     }
 
     @RequestMapping(value = "/forum/setBoardManager", method = RequestMethod.POST)
-    public ModelAndView setBoardManager(String userName, String boardId) {
+    public ModelAndView setBoardManager(@RequestParam("userName") String userName, @RequestParam("boardId") String boardId) {
         ModelAndView mav = new ModelAndView();
         User user = userService.getUserByUserName(userName);
         if (user == null) {
@@ -81,16 +82,17 @@ public class ForumManageController extends BaseController {
     }
 
     @RequestMapping(value = "/forum/userLockManagePage", method = RequestMethod.GET)
-    public ModelAndView userLockManagePage() {
+    public ModelAndView userLockManagePage(String context) {
+        System.out.println("pathContext: "+context);
         ModelAndView mav = new ModelAndView();
         List<User> users = userService.getAllUsers();
-        mav.setViewName("/userLockManage");
         mav.addObject("users", users);
+        mav.setViewName("/userLockManage");
         return mav;
     }
 
     @RequestMapping(value = "/forum/userLockManage", method = RequestMethod.POST)
-    public ModelAndView userLockManage(String userName, String locked) {
+    public ModelAndView userLockManage(@RequestParam("userName") String userName, @RequestParam("locked") String locked) {
         ModelAndView mav = new ModelAndView();
         User user = userService.getUserByUserName(userName);
         if (user == null) {

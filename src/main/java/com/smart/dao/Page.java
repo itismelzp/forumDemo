@@ -34,12 +34,12 @@ public class Page implements Serializable {
         if (totalCount % pageSize == 0) {
             return totalCount / pageSize;
         } else {
-            return totalCount;
+            return totalCount / pageSize + 1;
         }
     }
 
     public long getCurrentPageNo() {
-        return start / pageSize;
+        return start / pageSize + 1;
     }
 
     public boolean isHasNextPage() {
@@ -75,6 +75,10 @@ public class Page implements Serializable {
     }
 
     public List getData() {
+        return data;
+    }
+
+    public List getResult() {
         return data;
     }
 

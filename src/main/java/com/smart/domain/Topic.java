@@ -15,9 +15,9 @@ import java.util.Date;
 @Table(name = "t_topic")
 public class Topic extends BaseDomain {
 
-    public static final int DIGEST_TOPIC = 1;
-
     public static final int NOT_DIGEST_TOPIC = 0;
+
+    public static final int DIGEST_TOPIC = 1;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

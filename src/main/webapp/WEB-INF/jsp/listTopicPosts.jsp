@@ -68,7 +68,7 @@
 		   <input type="submit" value="保存">
 		   <input type="reset" value="重置">
 		   <input type="hidden" name="boardId" value="${topic.boardId}"/>
-		   <input type="hidden" name="topic.topicId" value="${topic.topicId}"/>
+		   <input type="hidden" name="topicId" value="${topic.topicId}"/>
 		</td>
 	</tr>
 </table>

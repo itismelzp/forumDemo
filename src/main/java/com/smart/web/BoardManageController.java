@@ -39,12 +39,12 @@ public class BoardManageController extends BaseController {
         pageNo = pageNo == null ? 1 : pageNo;
         Page pagedTopic = forumService.getPageTopics(boardId, pageNo, CommonConstant.PAGE_SIZE);
         mav.addObject("board", board);
-        mav.addObject("pageTopic", pagedTopic);
+        mav.addObject("pagedTopic", pagedTopic);
         mav.setViewName("/listBoardTopics");
         return mav;
     }
 
-    @RequestMapping(value = "/board/addTopicPage-{boarId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/board/addTopicPage-{boardId}", method = RequestMethod.GET)
     public ModelAndView addTopicPage(@PathVariable Integer boardId) {
         ModelAndView mav = new ModelAndView();
         mav.addObject("boardId", boardId);
@@ -64,14 +64,14 @@ public class BoardManageController extends BaseController {
         return "redirect:" + targetUrl;
     }
 
-    @RequestMapping(value = "/board/listTopicPosts-{topicId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/board/listTopicPosts-{topicId}", method = RequestMethod.GET)
     public ModelAndView listTopicPosts(@PathVariable Integer topicId, @RequestParam(value = "pageNo", required = false) Integer pageNo) {
         ModelAndView mav = new ModelAndView();
         Topic topic = forumService.getTopicByTopicId(topicId);
         pageNo = pageNo == null ? 1 : pageNo;
-        Page pagePost = forumService.getPagedPosts(topicId, pageNo, CommonConstant.PAGE_SIZE);
+        Page pagedTopic = forumService.getPagedPosts(topicId, pageNo, CommonConstant.PAGE_SIZE);
         mav.addObject("topic", topic);
-        mav.addObject("pagePost", pagePost);
+        mav.addObject("pagedPost", pagedTopic);
         mav.setViewName("/listTopicPosts");
         return mav;
     }
@@ -91,7 +91,7 @@ public class BoardManageController extends BaseController {
         return "redirect:" + targetUrl;
     }
 
-    @RequestMapping(value = "/board/removeBoard", method = RequestMethod.POST)
+    @RequestMapping(value = "/board/removeBoard", method = RequestMethod.GET)
     public String removeBoard(@RequestParam("boardIds") String boardIds) {
         String[] arrIds = boardIds.split(",");
         for (int i = 0; i < arrIds.length; i++) {
@@ -101,7 +101,7 @@ public class BoardManageController extends BaseController {
         return "redirect:" + targetUrl;
     }
 
-    @RequestMapping(value = "/board/removeTopic", method = RequestMethod.POST)
+    @RequestMapping(value = "/board/removeTopic", method = RequestMethod.GET)
     public String removeTopic(@RequestParam("topicIds") String topicIds, @RequestParam("boardId") String boardId) {
         String[] arrIds = topicIds.split(",");
         for (int i = 0; i < arrIds.length; i++) {
@@ -111,8 +111,8 @@ public class BoardManageController extends BaseController {
         return "redirect:" + targetUrl;
     }
 
-    @RequestMapping(value = "/board/makeDigestTopic", method = RequestMethod.POST)
-    public String makeDigestTopic(String topicIds, String boardId) {
+    @RequestMapping(value = "/board/makeDigestTopic", method = RequestMethod.GET)
+    public String makeDigestTopic(@RequestParam("topicIds") String topicIds, @RequestParam("boardId") String boardId) {
         String[] arrIds = topicIds.split(",");
         for (int i = 0; i < arrIds.length; i++) {
             forumService.makeDigestTopic(new Integer(arrIds[i]));

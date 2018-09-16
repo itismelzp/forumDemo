@@ -72,7 +72,7 @@
 	               var ids = getSelectedBoardIds();
 	               if(ids){
 	                  var url = "<c:url value="/board/removeboard.html"/>?boardIds="+ids+"";
-	                  //alert(url);
+	                  alert(url);
 	                  location.href = url;
 	               }
 	            }
