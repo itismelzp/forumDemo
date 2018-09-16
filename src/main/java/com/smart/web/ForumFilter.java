@@ -24,7 +24,8 @@ public class ForumFilter implements Filter {
     };
 
     // ② 执行过滤
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
 
         if (request != null && request.getAttribute(FILTERED_REQUEST) != null) {
             chain.doFilter(request, response);
